@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automated Analysis Tool for MOD & SYS Files</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="main-container">
+        <header class="app-header">
+            <div class="branding">
+                <img src="https://www.comau.com/wp-content/uploads/2024/07/cropped-Logo-COMAU.png" alt="COMAU Logo" class="logo">
+                <p class="developer-credit">COMAU UK</p>
+                <p class="developer-credit">Developed by Ibrahim Al Saadi</p>
+                <a href="mailto:ibrahim.alsaadi@comau.com" class="developer-email">ibrahim.alsaadi@comau.com</a>
+            </div>
+            <h1>Automated Analysis Tool for MOD & SYS Files</h1>
+        </header>
+
+        <div class="cards-container">
+            <!-- Card 1: jointtarget Analysis -->
+            <div class="analysis-card" id="jointtarget-card">
+                <h2><code>jointtarget</code> Analysis</h2>
+                <p>Compares all <code>jointtarget</code> definitions. Shows detailed axis differences and highlights changes based on deviation.</p>
+                <div class="controls">
+                    <div class="file-input-wrapper">
+                        <label for="jt-new-input">1. Select NEW Versions Folder</label>
+                        <div class="input-area">
+                            <input type="file" id="jt-new-input" webkitdirectory multiple />
+                            <span class="file-count" id="jt-new-count"></span>
+                        </div>
+                    </div>
+                    <div class="file-input-wrapper">
+                        <label for="jt-old-input">2. Select OLD Versions Folder</label>
+                         <div class="input-area">
+                            <input type="file" id="jt-old-input" webkitdirectory multiple />
+                            <span class="file-count" id="jt-old-count"></span>
+                        </div>
+                    </div>
+                    <div class="button-group">
+                        <button class="generate-list-btn" data-type="jointtarget">Generate File List</button>
+                        <button class="run-button" data-type="jointtarget">Generate Report</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2: robtarget Analysis -->
+            <div class="analysis-card" id="robtarget-card">
+                <h2><code>robtarget</code> Analysis</h2>
+                <p>Compares all <code>robtarget</code> definitions, ignoring numerical differences smaller than 0.01.</p>
+                <div class="controls">
+                    <div class="file-input-wrapper">
+                        <label for="rt-new-input">1. Select NEW Versions Folder</label>
+                        <div class="input-area">
+                            <input type="file" id="rt-new-input" webkitdirectory multiple />
+                            <span class="file-count" id="rt-new-count"></span>
+                        </div>
+                    </div>
+                    <div class="file-input-wrapper">
+                        <label for="rt-old-input">2. Select OLD Versions Folder</label>
+                        <div class="input-area">
+                            <input type="file" id="rt-old-input" webkitdirectory multiple />
+                            <span class="file-count" id="rt-old-count"></span>
+                        </div>
+                    </div>
+                    <div class="button-group">
+                        <button class="generate-list-btn" data-type="robtarget">Generate File List</button>
+                        <button class="run-button" data-type="robtarget">Generate Report</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3: SYSMOD Analysis -->
+            <div class="analysis-card" id="sysmod-card">
+                <h2><code>SYSMOD (.sys)</code> Analysis</h2>
+                <p>Select an analysis type to compare parameters within <code>.sys</code> files.</p>
+                <div class="controls">
+                    <button class="sub-analysis-btn" data-type="tooldata">ToolData (Pedestal TCPs)</button>
+                    <button disabled>Option 2 (Future)</button>
+                    <button disabled>Option 3 (Future)</button>
+
+                    <div class="sub-controls" id="tooldata-controls">
+                         <div class="file-input-wrapper">
+                            <label for="td-new-input">1. Select NEW Versions Folder</label>
+                            <div class="input-area">
+                                <input type="file" id="td-new-input" webkitdirectory multiple />
+                                <span class="file-count" id="td-new-count"></span>
+                            </div>
+                        </div>
+                        <div class="file-input-wrapper">
+                            <label for="td-old-input">2. Select OLD Versions Folder</label>
+                            <div class="input-area">
+                                <input type="file" id="td-old-input" webkitdirectory multiple />
+                                <span class="file-count" id="td-old-count"></span>
+                            </div>
+                        </div>
+                        <div class="button-group">
+                            <button class="generate-list-btn" data-type="tooldata">Generate File List</button>
+                            <button class="run-button" data-type="tooldata">Generate Report</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="report-output-area"></div>
+    </div>
+
+    <!-- Switched to ExcelJS library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.3.0/exceljs.min.js"></script>
+    
+    <!-- Custom Excel export script -->
+    <script src="js/excel-export.js"></script>
+    
+    <!-- Main application logic -->
+    <script src="js/main.js"></script>
+
+</body>
+</html>
